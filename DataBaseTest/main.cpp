@@ -9,7 +9,7 @@
 #include <iostream>
 #import "sqlite3.h"
 #include <cstring>
-
+#include "cmath"
 using namespace std;
 
 int sqlite3_exec_callback(void *data, int nColumn,char **colValues, char **colNames);
