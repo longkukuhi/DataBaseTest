@@ -24,21 +24,27 @@ int sqlite3_exec_callback(void *data, int nColumn, char **colValues, char **colN
     
     return 0;
 }
+//DateBase callback function
 int main(int argc, char** argv)
 {
     sqlite3 * Database = NULL;
     //Main database pointer
+    
     char * err_msg = NULL;
     //Error message pointer
+    
     const char *Sql_Create_Buffer= new char[100];
     Sql_Create_Buffer = "create table user(id integer primary key autoincrement,name varchar(20))";
+    
+    // sql create
     const char *Sql_Insert_Buffer = new char[100];
     Sql_Insert_Buffer = "insert into user values (54,'车日天')";
+    //sql insert
     char *Sql_Query_Buffer = new char[100];
     //char Sql_Query_Buffer[100];
     Sql_Query_Buffer = "select * from user";
     char enter[100];
-    //initial sql pointer
+    //sql query
     
     // 打开数据库, 创建连接
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
