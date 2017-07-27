@@ -56,14 +56,14 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg){
     return check;
 }
 
-void OpenDataBase(sqlite3 *Database, char *err_msg){
-    if(sqlite3_open("test.db", &Database) != SQLITE_OK)
-    {
-        printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
-        exit(-1);
-    }
-    else printf("打开数据库成功！\n");
-}
+//void OpenDataBase(sqlite3 *Database, char *err_msg){
+//    if(sqlite3_open("test.db", &Database) != SQLITE_OK)
+//    {
+//        printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
+//        exit(-1);
+//    }
+//    else printf("打开数据库成功！\n");
+//}
 
 void CloseDataBase(sqlite3 *Database, char *err_msg){
     if (sqlite3_close(Database) != SQLITE_OK)

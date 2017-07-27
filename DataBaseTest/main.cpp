@@ -12,18 +12,18 @@
 #include "Datebase_Test_API.hpp"
 #include "Database_controll_API.hpp"
 using namespace std;
-
-//Main Parameter
 static sqlite3 *Database = NULL;
 //Main database pointer
 
 static char *err_msg = NULL;
+//Main Parameter
+
 //Error message pointer
 
 
 int main(int argc, char** argv)
 {
-    //OpenDataBase(Database, err_msg);
+    
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
         printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
@@ -58,7 +58,13 @@ int main(int argc, char** argv)
    
     
     // 关闭连接。
-    CloseDataBase(Database, err_msg);
+    if (sqlite3_close(Database) != SQLITE_OK)
+    {
+        printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
+        exit(-1);
+    }
+    else printf("关闭数据库成功！\n");
+    //CloseDataBase(Database, err_msg);
     
     return 0;
 }
