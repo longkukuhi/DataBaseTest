@@ -14,16 +14,22 @@
 using namespace std;
 
 //Main Parameter
-static sqlite3 * Database = NULL;
+static sqlite3 *Database = NULL;
 //Main database pointer
 
-static char * err_msg = NULL;
+static char *err_msg = NULL;
 //Error message pointer
 
 
 int main(int argc, char** argv)
 {
-    OpenDataBase(Database, err_msg);
+    //OpenDataBase(Database, err_msg);
+    if(sqlite3_open("test.db", &Database) != SQLITE_OK)
+    {
+        printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
+        exit(-1);
+    }
+    else printf("打开数据库成功！\n");
     CreateTable_Auto(Database, err_msg);
     Insert_Auto(Database, err_msg);
     Displaytable_Auto_all(Database, err_msg);

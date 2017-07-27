@@ -23,22 +23,22 @@ int sqlite3_exec_callback(void *data, int nColumn, char **colValues, char **colN
     return 0;
 }
 
-int sqlite3_exec_callback_checkexsit(void *data, int nColumn, char **colValues, char **colNames){
-    //    int check;
-    //    char compare[2] = "1";
-    //    if(*colValues[0]==compare[0]){check=1;}
-    //    else check = 0;
-    //    printf("%s", colValues[0]);
-    //    cout<<check;
-    for (int i = 0; i < nColumn; i++)
-    {
-        printf("%s\t", colValues[i]);
-    }
-    printf("\n");
-    
-    cout<<"running";
-    return 0;
-}
+//int sqlite3_exec_callback_checkexsit(void *data, int nColumn, char **colValues, char **colNames){
+//    //    int check;
+//    //    char compare[2] = "1";
+//    //    if(*colValues[0]==compare[0]){check=1;}
+//    //    else check = 0;
+//    //    printf("%s", colValues[0]);
+//    //    cout<<check;
+//    for (int i = 0; i < nColumn; i++)
+//    {
+//        printf("%s\t", colValues[i]);
+//    }
+//    printf("\n");
+//    
+//    cout<<"running";
+//    return 0;
+//}
 
 int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg){
     int check = 0;
@@ -74,9 +74,16 @@ void CloseDataBase(sqlite3 *Database, char *err_msg){
     else printf("关闭数据库成功！\n");
 }
 void CreateTable_Auto(sqlite3 *Database, char *err_msg){
-    char Sql_Create_Buffer[100]= "create table event(Id integer primary key)";
+    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
     //,Title text,Catalogue text,State integer,Start_Time integer,End_Time integer
-    sqlite3 *Database_here = Database;
+    //sqlite3 *Database_here = Database;
+    char Sql_Delete[100]= "drop table event";
+    if (sqlite3_exec(Database, Sql_Delete, NULL, NULL, &err_msg) != SQLITE_OK) {
+        cout<<"Operation fail"<<err_msg;
+        exit(-1);
+    }
+    else cout<<"Database deleted successfully"<<endl;
+    
     if (sqlite3_exec(Database, Sql_Create_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
         cout<<"Operation fail"<<err_msg;
         exit(-1);
@@ -86,7 +93,7 @@ void CreateTable_Auto(sqlite3 *Database, char *err_msg){
 }
 void Insert_Auto(sqlite3 *Database, char *err_msg){
     const char *Sql_Insert_Buffer = new char[200];
-    Sql_Insert_Buffer = "insert into event values (54,'车日天是狗'，‘全部事项’，0，201707272330，201707272400)";
+    Sql_Insert_Buffer = "insert into event values (54,'车日天是狗','全部事项',0,'201707272330','201707272400')";
     if (sqlite3_exec(Database, Sql_Insert_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
         cout<<"Operation fail"<<err_msg;
         exit(-1);
