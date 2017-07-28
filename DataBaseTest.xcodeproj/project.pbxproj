@@ -11,6 +11,7 @@
 		574092691F27143E003946B2 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 574092681F27143E003946B2 /* libsqlite3.0.tbd */; };
 		936412A11F2A2F74002AF81F /* Database_controll_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9364129F1F2A2F74002AF81F /* Database_controll_API.cpp */; };
 		936412A41F2A2FA6002AF81F /* Datebase_Test_API.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936412A21F2A2FA6002AF81F /* Datebase_Test_API.cpp */; };
+		936B83FD1F2AFBFC005867EF /* Test_option.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936B83FB1F2AFBFC005867EF /* Test_option.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,8 @@
 		936412A01F2A2F74002AF81F /* Database_controll_API.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Database_controll_API.hpp; sourceTree = "<group>"; };
 		936412A21F2A2FA6002AF81F /* Datebase_Test_API.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Datebase_Test_API.cpp; sourceTree = "<group>"; };
 		936412A31F2A2FA6002AF81F /* Datebase_Test_API.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Datebase_Test_API.hpp; sourceTree = "<group>"; };
+		936B83FB1F2AFBFC005867EF /* Test_option.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Test_option.cpp; sourceTree = "<group>"; };
+		936B83FC1F2AFBFC005867EF /* Test_option.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Test_option.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				936412A31F2A2FA6002AF81F /* Datebase_Test_API.hpp */,
 				9364129F1F2A2F74002AF81F /* Database_controll_API.cpp */,
 				936412A01F2A2F74002AF81F /* Database_controll_API.hpp */,
+				936B83FB1F2AFBFC005867EF /* Test_option.cpp */,
+				936B83FC1F2AFBFC005867EF /* Test_option.hpp */,
 			);
 			path = DataBaseTest;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936B83FD1F2AFBFC005867EF /* Test_option.cpp in Sources */,
 				936412A11F2A2F74002AF81F /* Database_controll_API.cpp in Sources */,
 				574092611F270F2D003946B2 /* main.cpp in Sources */,
 				936412A41F2A2FA6002AF81F /* Datebase_Test_API.cpp in Sources */,

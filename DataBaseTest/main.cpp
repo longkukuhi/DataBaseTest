@@ -11,6 +11,7 @@
 #include <cstring>
 #include "Datebase_Test_API.hpp"
 #include "Database_controll_API.hpp"
+#include "Test_option.hpp"
 using namespace std;
 static sqlite3 *Database = NULL;
 //Main database pointer
@@ -24,15 +25,12 @@ static char *err_msg = NULL;
 int main(int argc, char** argv)
 {
     
-    if(sqlite3_open("test.db", &Database) != SQLITE_OK)
-    {
-        printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
-        exit(-1);
-    }
-    else printf("打开数据库成功！\n");
-    CreateTable_Auto(Database, err_msg);
-    Insert_Auto(Database, err_msg);
-    Displaytable_Auto_all(Database, err_msg);
+      Test_Option *Test_Option_Instance = new Test_Option;
+    
+      Test_Option_Instance->Run_Default_Values_Test(Database,err_msg);
+    
+    
+    
     
     //check database whether exist or not
 //    int CheckDatabese=0;
@@ -56,15 +54,6 @@ int main(int argc, char** argv)
 //      //cout<<enter;
 //      //cout<<Sql_Query_Buffer;
    
-    
-    // 关闭连接。
-    if (sqlite3_close(Database) != SQLITE_OK)
-    {
-        printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
-        exit(-1);
-    }
-    else printf("关闭数据库成功！\n");
-    //CloseDataBase(Database, err_msg);
     
     return 0;
 }

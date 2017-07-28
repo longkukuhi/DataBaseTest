@@ -12,4 +12,17 @@
 #include <stdio.h>
 #import "sqlite3.h"
 
+void CreateTable_Test(sqlite3 *Database, char *err_msg);
+void Insert_Test(sqlite3 *Database, char *err_msg);
+void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg);
+
+void CreateTable_Call_Test(sqlite3 *Database, char *err_msg);
+void Insert_Call_Test(sqlite3 *Database, char *err_msg);
+void Displaytable_Call_Test_AllData(sqlite3 *Database, char *err_msg);
+
+void CreateTable_Enter_Call_Test(sqlite3 *Database, char *err_msg);
+void Insert_Enter_Call_Test(sqlite3 *Database, char *err_msg);
+void Displaytable_Enter_Call_Test_AllData(sqlite3 *Database, char *err_msg);
+
+
 #endif /* Datebase_Test_API_hpp */
