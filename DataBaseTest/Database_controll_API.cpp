@@ -133,7 +133,6 @@ void Insert_Manual(sqlite3 *Database, char *err_msg,char *sql){
     
 }
 
-
 void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
