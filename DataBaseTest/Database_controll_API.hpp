@@ -13,7 +13,8 @@
 #import "sqlite3.h"
 #include <iostream>
 using namespace std;
- void OpenDataBase(sqlite3 *Database, char *err_msg){if(sqlite3_open("test.db", &Database) != SQLITE_OK)
+
+inline void OpenDataBase(sqlite3 *Database, char *err_msg){if(sqlite3_open("test.db", &Database) != SQLITE_OK)
 {
     printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
     exit(-1);
@@ -21,14 +22,14 @@ using namespace std;
 else printf("打开数据库成功！\n");
 }
 
- void CloseDataBase(sqlite3 *Database, char *err_msg){ if (sqlite3_close(Database) != SQLITE_OK)
+inline void CloseDataBase(sqlite3 *Database, char *err_msg){ if (sqlite3_close(Database) != SQLITE_OK)
 {
     printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
     exit(-1);
 }
     else printf("关闭数据库成功！\n");}
 
-int sqlite3_Exec_callBack(void *data, int nColumn,char **colValues, char **colNames);
+int sqlite3_exec_callback(void *data, int nColumn,char **colValues, char **colNames);
 
 int sqlite3_exec_callback_checkexsit(void *data, int nColumn, char **colValues, char **colNames);
 

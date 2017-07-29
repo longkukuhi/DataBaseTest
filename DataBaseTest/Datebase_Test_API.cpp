@@ -75,7 +75,7 @@ void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
     char *Sql_Query_Buffer = new char[100];
     
     Sql_Query_Buffer = "select * from event";
-    if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_Exec_callBack, 0, &err_msg)!=SQLITE_OK)
+    if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
     {
         cout<<"Operation fail"<<err_msg;
         exit(-1);

@@ -14,7 +14,8 @@ using namespace std;
 
 static bool checkTableIsExist_Values = 0;
 
-int sqlite3_Exec_callBack(void *data, int nColumn, char **colValues, char **colNames)
+
+int sqlite3_exec_callback(void *data, int nColumn, char **colValues, char **colNames)
 {
     for (int i = 0; i < nColumn; i++)
     {
@@ -25,7 +26,7 @@ int sqlite3_Exec_callBack(void *data, int nColumn, char **colValues, char **colN
     return 0;
 }
 
-int sqlite3_Exec_callBack_checkIsExsit(void *data, int nColumn, char **colValues, char **colNames){
+int sqlite3_exec_callback_checkisexsit(void *data, int nColumn, char **colValues, char **colNames){
     char compare = '1';
     
     if(*colValues[0]==compare){checkTableIsExist_Values = 1;}
@@ -49,7 +50,7 @@ bool CheckTableISExist(char *tableName,sqlite3 *Database, char *err_msg){
     }
     else cout<<"sytax error,please enter the right name."<<endl;
     
-    if(sqlite3_exec(Database, sql_Sentence, &sqlite3_Exec_callBack_checkIsExsit, 0, &err_msg)){
+    if(sqlite3_exec(Database, sql_Sentence, &sqlite3_exec_callback_checkisexsit, 0, &err_msg)){
         cout<<"Operation fail:"<<err_msg;
         exit(-1);
     }
@@ -74,11 +75,11 @@ void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
     {
         cout<<"please enter sql"<<endl;
         cin.getline(Sql_Create_Buffer, 200);
-        cout<<Sql_Create_Buffer<<endl;
+        cout<<"sql is :"<<Sql_Create_Buffer<<"."<<endl;
     }
     else    {
         Sql_Create_Buffer = sql;
-        cout<<Sql_Create_Buffer<<endl;
+        cout<<"sql is :"<<Sql_Create_Buffer<<"."<<endl;
     }
     
     //choose whether excute drop
@@ -180,7 +181,7 @@ void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
     //
     
     //excute
-    if(sqlite3_exec(Database,Sql_Display_Buffer, &sqlite3_Exec_callBack, 0, &err_msg)!=SQLITE_OK)
+    if(sqlite3_exec(Database,Sql_Display_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
     {
         cout<<"Operation fail:"<<err_msg;
         exit(-1);
