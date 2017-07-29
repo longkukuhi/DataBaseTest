@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Longkuku. All rights reserved.
 //
 
-//#include "Database_controll_API.hpp"
-//#include "Datebase_Test_API.hpp"
+#include "Database_controll_API.hpp"
+#include "Datebase_Test_API.hpp"
 #include <iostream>
 #import "sqlite3.h"
 using namespace std;

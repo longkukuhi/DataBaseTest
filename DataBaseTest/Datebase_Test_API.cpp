@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Longkuku. All rights reserved.
 //
 
-//#include "Datebase_Test_API.hpp"
+#include "Datebase_Test_API.hpp"
 #include "Database_controll_API.hpp"
 #import "sqlite3.h"
 #include <iostream>
