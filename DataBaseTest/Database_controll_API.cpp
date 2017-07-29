@@ -139,28 +139,31 @@ void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
         printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
         exit(-1);
     }
-    else printf("打开数据库成功！\n");
+    else printf(" 连接数据库成功！\n");
     
-    char *Sql_Query_Buffer = new char[200];
+    char *Sql_Display_Buffer = new char[200];
+    char *Open_Name = new char[100];
+    
     if(sql==nullptr)
     {
-        cout<<"please enter sql"<<endl;
-        cin.getline(Sql_Query_Buffer, 200);
-        cout<<Sql_Query_Buffer<<endl;
+        cout<<"Please enter the table or view name"<<endl;
+        cin.getline(Sql_Display_Buffer, 200);
+        cout<<Sql_Display_Buffer<<endl;
     }
-    else    Sql_Query_Buffer = sql;
-    cout<<Sql_Query_Buffer<<endl;
+    else    Sql_Display_Buffer = sql;
+    cout<<Sql_Display_Buffer<<endl;
     
-    if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
+    if(sqlite3_exec(Database,Sql_Display_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
     {
-        cout<<"Operation fail"<<err_msg;
+        cout<<"Operation fail:"<<err_msg;
         exit(-1);
     }
     else cout<<"Data display successfully"<<endl;
+    
     if (sqlite3_close(Database) != SQLITE_OK)
     {
         printf("无法关闭，错误代码: %s\n", sqlite3_errmsg(Database));
         exit(-1);
     }
-    else printf("关闭数据库成功！\n");
+    else printf("断开数据库连接成功！\n");
 }
