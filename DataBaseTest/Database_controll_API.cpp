@@ -60,6 +60,26 @@ bool CheckTableISExist(char *tableName,sqlite3 *Database, char *err_msg){
     return checkTableIsExist_Values;
 }
 
+char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
+    long titleLength = strlen(pointer1);
+    long nameLength = strlen(pointer2);
+    char *Sql_Display_Buffer= new char[titleLength+nameLength+10];
+    strcpy(Sql_Display_Buffer, "select ");
+    if (pointer1 != nullptr) {
+        strcat(Sql_Display_Buffer, pointer1);
+        
+    }
+    else strcpy(Sql_Display_Buffer, "*");
+    
+    strcat(Sql_Display_Buffer, " from ");
+    if (pointer2 != nullptr) {
+        strcat(Sql_Display_Buffer, pointer2);
+    }
+    else cout<<"sytax error,please enter the right name";
+    cout<<"The sql is: "<<Sql_Display_Buffer<<endl;
+    return Sql_Display_Buffer;
+}
+
 void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
     //open
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
@@ -172,9 +192,13 @@ void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
     //input
     if(sql==nullptr)
     {
-        cout<<"Please enter the table or view name"<<endl;
-        cin.getline(Sql_Display_Buffer, 200);
-        cout<<Sql_Display_Buffer<<endl;
+        cout<<"Please enter the item name"<<endl;
+        char *itemName = new char[200];
+        char *tableName = new char[100];
+        cin.getline(itemName, 200);
+        cin.getline(tableName, 200);
+        Sql_Display_Buffer = catch_Title_EventName_DisplayALL(itemName, tableName);
+        cout<<"Sql_Display_Buffer is :"<<Sql_Display_Buffer<<endl;
     }
     else    Sql_Display_Buffer = sql;
     cout<<Sql_Display_Buffer<<endl;
