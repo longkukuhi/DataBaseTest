@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Longkuku. All rights reserved.
 //
 
-#include "Datebase_Test_API.hpp"
+//#include "Datebase_Test_API.hpp"
 #include "Database_controll_API.hpp"
 #import "sqlite3.h"
 #include <iostream>
@@ -75,7 +75,7 @@ void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
     char *Sql_Query_Buffer = new char[100];
     
     Sql_Query_Buffer = "select * from event";
-    if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
+    if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_Exec_callBack, 0, &err_msg)!=SQLITE_OK)
     {
         cout<<"Operation fail"<<err_msg;
         exit(-1);
@@ -112,6 +112,7 @@ void CreateTable_Enter_Call_Test(sqlite3 *Database, char *err_msg){
 void Insert_Enter_Call_Test(sqlite3 *Database, char *err_msg){
     Sql_Manual(Database, err_msg, nullptr);
 }
+
 void Displaytable_Enter_Call_Test_AllData(sqlite3 *Database, char *err_msg){
     Displaytable_Manual(Database, err_msg, nullptr);
 }
