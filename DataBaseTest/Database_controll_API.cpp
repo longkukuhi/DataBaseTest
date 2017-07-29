@@ -1,4 +1,4 @@
-//
+     //
 //  Database_controll_API.cpp
 //  DataBaseTest
 //
@@ -79,11 +79,11 @@ void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
     
     char Sql_Delete[100]= "drop table event";
     
-//    if (sqlite3_exec(Database, Sql_Delete, NULL, NULL, &err_msg) != SQLITE_OK) {
-//        cout<<"Operation fail"<<err_msg;
-//        exit(-1);
-//    }
-//    else cout<<"Database deleted successfully"<<endl;
+    if (sqlite3_exec(Database, Sql_Delete, NULL, NULL, &err_msg) != SQLITE_OK) {
+        cout<<"Operation fail"<<err_msg;
+        exit(-1);
+    }
+    else cout<<"Database deleted successfully"<<endl;
     
     if (sqlite3_exec(Database, Sql_Create_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
         cout<<"Operation fail"<<err_msg;
@@ -99,7 +99,7 @@ void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
 }
 
 
-void Insert_Manual(sqlite3 *Database, char *err_msg,char *sql){
+void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql){
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
         printf("无法打开，错误代码: %s\n", sqlite3_errmsg(Database));
