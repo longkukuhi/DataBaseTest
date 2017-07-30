@@ -80,7 +80,7 @@ char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
     return Sql_Display_Buffer;
 }
 
-void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
+void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
     //open
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
@@ -133,8 +133,7 @@ void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql){
     else printf("关闭数据库成功！\n");
 }
 
-
-void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql){
+void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
     //open
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {
@@ -174,7 +173,7 @@ void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql){
     
 }
 
-void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql){
+void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
     //open
     if(sqlite3_open("test.db", &Database) != SQLITE_OK)
     {

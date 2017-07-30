@@ -39,12 +39,13 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
 
 
-void CreateTable_Manual(sqlite3 *Database, char *err_msg, char *sql);
+void CreateTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
 
 
-void Sql_Manual(sqlite3 *Database, char *err_msg,char *sql);
+void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
 
 
-void Displaytable_Manual(sqlite3 *Database, char *err_msg,char *sql);
+void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);
+
 
 #endif /* Database_controll_API_hpp */
