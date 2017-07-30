@@ -41,6 +41,11 @@ void Test_Option::Run_Default_Values_Test(sqlite3 *Database,char *err_msg){
     Run_Insert_Auto(Database, err_msg);
     Run_Displaytable_Auto_all(Database, err_msg);
 }
+void Test_Option::Run_Default_Values_Test_Inter(){
+    Run_CreateTable_Auto(Database, err_msg);
+    Run_Insert_Auto(Database, err_msg);
+    Run_Displaytable_Auto_all(Database, err_msg);
+}
 void Test_Option::Run_Enter_Sql_Test(sqlite3 *Database,char *err_msg){
     Run_CreateTable_Enter_Call_Test(Database, err_msg);
     Run_Insert_Enter_Call_Test(Database, err_msg);

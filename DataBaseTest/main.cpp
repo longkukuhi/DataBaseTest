@@ -25,9 +25,9 @@ static char *err_msg = NULL;
 int main(int argc, char** argv)
 {
     
-      Test_Option *Test_Option_Instance = new Test_Option;
+      Test_Option *Test_Option_Instance = new Test_Option(Database,err_msg);
     
-    Test_Option_Instance->Run_Default_Values_Test(Database,err_msg);
+      Test_Option_Instance->Run_Default_Values_Test(Database,err_msg);
     
     
     
@@ -54,6 +54,7 @@ int main(int argc, char** argv)
 //      //cout<<enter;
 //      //cout<<Sql_Query_Buffer;
    
+    deletePointer(Database, err_msg);
     
     return 0;
 }

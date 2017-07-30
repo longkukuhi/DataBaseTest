@@ -19,8 +19,13 @@ using namespace std;
 class Test_Option{
 public:
     sqlite3 *Database;
-    static char *err_msg;
+    char *err_msg;
     
+    Test_Option(sqlite3 *database,
+                char *err_mesg){
+        Database = database;
+        err_msg = err_mesg;
+    }
     void Run_CreateTable_Enter_Call_Test( sqlite3 *Database,char *err_msg);
     void Run_Insert_Enter_Call_Test(sqlite3 *Database,char *err_msg);
     void Run_Displaytable_Enter_Call_Test_AllData(sqlite3 *Database,char *err_msg);
@@ -32,7 +37,9 @@ public:
     
     void Run_Default_Values_Test(sqlite3 *Database,char *err_msg);
     void Run_Enter_Sql_Test(sqlite3 *Database,char *err_msg);
+    void Run_Default_Values_Test_Inter();
 };
+
 
 
 #endif /* Test_option_hpp */

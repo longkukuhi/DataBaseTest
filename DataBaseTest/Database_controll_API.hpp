@@ -35,7 +35,7 @@ int sqlite3_exec_callback(void *data, int nColumn,char **colValues, char **colNa
 
 int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
-
+void deletePointer(sqlite3 *Database, char *err_msg);
 
 
 
