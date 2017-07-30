@@ -24,6 +24,7 @@ public:
     void Run_CreateTable_Enter_Call_Test( sqlite3 *Database,char *err_msg);
     void Run_Insert_Enter_Call_Test(sqlite3 *Database,char *err_msg);
     void Run_Displaytable_Enter_Call_Test_AllData(sqlite3 *Database,char *err_msg);
+    void Run_AllSql_Test(sqlite3 *Database,char *err_msg);
     
     void Run_CreateTable_Auto(sqlite3 *Database,char *err_msg);
     void Run_Insert_Auto(sqlite3 *Database,char *err_msg);

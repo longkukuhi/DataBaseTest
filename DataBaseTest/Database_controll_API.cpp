@@ -40,8 +40,10 @@ int sqlite3_exec_callback_checkisexsit(void *data, int nColumn, char **colValues
 
 bool CheckTableISExist(char *tableName,sqlite3 *Database, char *err_msg){
     
+    //data
     char *sql_Sentence = new char[200];
     strcpy(sql_Sentence,"SELECT COUNT(*) FROM sqlite_master where type='table' and name=");
+    //
     
     //add tablename into sql
     if (tableName != nullptr) {
@@ -57,14 +59,23 @@ bool CheckTableISExist(char *tableName,sqlite3 *Database, char *err_msg){
     else cout<<"sql excuted succesfully."<<endl;
     
     cout<<"checkTableIsExist_Values is :"<<checkTableIsExist_Values<<"."<<endl;
+    //
+    
+    //data delete
+    delete []sql_Sentence;
     return checkTableIsExist_Values;
+    //
 }
 
 char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
+    //data
     long titleLength = strlen(pointer1);
     long nameLength = strlen(pointer2);
     char *Sql_Display_Buffer= new char[titleLength+nameLength+10];
     strcpy(Sql_Display_Buffer, "select ");
+    //
+    
+    //input
     if (pointer1 != nullptr) {
         strcat(Sql_Display_Buffer, pointer1);
         
@@ -77,7 +88,16 @@ char *catch_Title_EventName_DisplayALL(char *pointer1,char *pointer2){
     }
     else cout<<"sytax error,please enter the right name";
     cout<<"The sql is: "<<Sql_Display_Buffer<<endl;
+    //
+    
+    //delete
+    delete []Sql_Display_Buffer;
     return Sql_Display_Buffer;
+    //
+}
+
+void deletePointer(){
+
 }
 
 void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
@@ -88,6 +108,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         exit(-1);
     }
     else printf("打开数据库成功！\n");
+    //
     
     //choose excute sentence
     char *Sql_Create_Buffer = new char[200];
@@ -101,11 +122,13 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         Sql_Create_Buffer = sql;
         cout<<"sql is :"<<Sql_Create_Buffer<<"."<<endl;
     }
+    //
     
     //choose whether excute drop
     char Sql_Delete[100]= "drop table event";
     char *tableName = new char[200];
     strcpy(tableName, "'event'");
+    //
     
     //excute delete
     if (CheckTableISExist(tableName, Database, err_msg)) {
@@ -115,7 +138,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         }
         else cout<<"Database deleted successfully"<<endl;
     }
-  
+    //
     
     //excute sql create
     if (sqlite3_exec(Database, Sql_Create_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
@@ -123,6 +146,7 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         exit(-1);
     }
     else cout<<"Database created successfully"<<endl;
+    //
     
     //close
     if (sqlite3_close(Database) != SQLITE_OK)
@@ -131,6 +155,13 @@ void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql){
         exit(-1);
     }
     else printf("关闭数据库成功！\n");
+    //
+    
+    //delete
+    //delete []Sql_Create_Buffer;
+    delete []tableName;
+    //
+    
 }
 
 void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
@@ -141,9 +172,11 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         exit(-1);
     }
     else printf("打开数据库成功！\n");
+    //
     
     //input
     char *Sql_Insert_Buffer = new char[200];
+    
     if(sql==nullptr)
     {
         cout<<"please enter sql(support all sql sentence): "<<endl;
@@ -155,6 +188,7 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         Sql_Insert_Buffer = sql;
         cout<<"sql sentence is: "<<Sql_Insert_Buffer<<"."<<endl;
     }
+    //
     
     //excute
     if (sqlite3_exec(Database, Sql_Insert_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
@@ -162,6 +196,7 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         exit(-1);
     }
     else cout<<"Data inserted successfully"<<endl;
+    //
     
     //close
     if (sqlite3_close(Database) != SQLITE_OK)
@@ -170,7 +205,11 @@ void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         exit(-1);
     }
     else printf("关闭数据库成功！\n");
+    //
     
+    //delete
+    //delete []Sql_Insert_Buffer;
+    //
 }
 
 void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
@@ -219,4 +258,9 @@ void Displaytable_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql){
         exit(-1);
     }
     else printf("断开数据库连接成功！\n");
+    //
+    //delete
+    delete []Open_Name;
+    //delete []Sql_Display_Buffer;
+    //
 }

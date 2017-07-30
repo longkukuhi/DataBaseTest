@@ -19,8 +19,8 @@ void CreateTable_Test(sqlite3 *Database, char *err_msg){
     }
     else printf("打开数据库成功！\n");
     
-    char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
-    char Sql_Delete[100]= "drop table event";
+    const char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
+    const char Sql_Delete[100]= "drop table event";
     
     if (sqlite3_exec(Database, Sql_Delete, NULL, NULL, &err_msg) != SQLITE_OK) {
         cout<<"Operation fail"<<err_msg;
@@ -49,8 +49,9 @@ void Insert_Test(sqlite3 *Database, char *err_msg){
     }
     else printf("打开数据库成功！\n");
     
-    const char *Sql_Insert_Buffer = new char[200];
-    Sql_Insert_Buffer = "insert into event values (54,'车日天是狗','全部事项',0,'201707272330','201707272400')";
+    char *Sql_Insert_Buffer = new char[200];
+    strcpy(Sql_Insert_Buffer,"insert into event values (54,'车日天是狗','全部事项',0,'201707272330','201707272400')");
+    
     if (sqlite3_exec(Database, Sql_Insert_Buffer, NULL, NULL, &err_msg) != SQLITE_OK) {
         cout<<"Operation fail"<<err_msg;
         exit(-1);
@@ -62,7 +63,8 @@ void Insert_Test(sqlite3 *Database, char *err_msg){
         exit(-1);
     }
     else printf("关闭数据库成功！\n");
-    
+    //delete
+    delete []Sql_Insert_Buffer;
 }
 
 void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
@@ -73,8 +75,8 @@ void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
     }
     else printf("打开数据库成功！\n");
     char *Sql_Query_Buffer = new char[100];
-    
-    Sql_Query_Buffer = "select * from event";
+    strcpy(Sql_Query_Buffer, "select * from event");
+
     if(sqlite3_exec(Database,Sql_Query_Buffer, &sqlite3_exec_callback, 0, &err_msg)!=SQLITE_OK)
     {
         cout<<"Operation fail"<<err_msg;
@@ -87,27 +89,29 @@ void Displaytable_Test_AllData(sqlite3 *Database, char *err_msg){
         exit(-1);
     }
     else printf("关闭数据库成功！\n");
+    
+    //delete
+    delete []Sql_Query_Buffer;
 }
 
-void CreateTable_Call_Test(sqlite3 *Database, char *err_msg){
+void CreateTable_Default_Call_Test(sqlite3 *Database, char *err_msg){
     char Sql_Create_Buffer[200]= "create table event(Id integer primary key,Title text,Catalogue text,State integer,Start_Time text,End_Time text)";
-    CreateTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer);
+    createTable_Intelligent_API(Database, err_msg, Sql_Create_Buffer);
 }
 
-void Insert_Call_Test(sqlite3 *Database, char *err_msg){
+void Insert_Default_Call_Test(sqlite3 *Database, char *err_msg){
     char Sql_Insert_Buffer[200] = "insert into event values (54,'车日天是狗','全部事项',0,'201707272330','201707272400')";
     Sql_Intelligent_API(Database, err_msg, Sql_Insert_Buffer);
 }
 
-void Displaytable_Call_Test_AllData(sqlite3 *Database, char *err_msg){
+void Displaytable_Default_Call_Test_AllData(sqlite3 *Database, char *err_msg){
     char Sql_Query_Buffer [200] = "select * from event";
     Displaytable_Intelligent_API(Database, err_msg, Sql_Query_Buffer);
 }
 
 void CreateTable_Enter_Call_Test(sqlite3 *Database, char *err_msg){
-    //char Sql_Create_Buffer[200];
-    //cin.getline(Sql_Create_Buffer, 200);
-    CreateTable_Intelligent_API(Database, err_msg, nullptr);
+
+    createTable_Intelligent_API(Database, err_msg, nullptr);
 }
 void Insert_Enter_Call_Test(sqlite3 *Database, char *err_msg){
     Sql_Intelligent_API(Database, err_msg, nullptr);

@@ -39,7 +39,7 @@ int CheckTableExist(char *Sql,sqlite3 *Database, char *err_msg);
 
 
 
-void CreateTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
+void createTable_Intelligent_API(sqlite3 *Database, char *err_msg, char *sql);
 
 
 void Sql_Intelligent_API(sqlite3 *Database, char *err_msg,char *sql);

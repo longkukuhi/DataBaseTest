@@ -22,15 +22,18 @@ void Test_Option::Run_Insert_Enter_Call_Test(sqlite3 *Database,char *err_msg){
 void Test_Option::Run_Displaytable_Enter_Call_Test_AllData(sqlite3 *Database,char *err_msg){
     Displaytable_Enter_Call_Test_AllData(Database,err_msg);
 }
+void Test_Option::Run_AllSql_Test(sqlite3 *Database,char *err_msg){
+    Insert_Enter_Call_Test(Database, err_msg);
+}
 
 void Test_Option::Run_CreateTable_Auto(sqlite3 *Database,char *err_msg){
-    CreateTable_Call_Test(Database, err_msg);
+    CreateTable_Default_Call_Test(Database, err_msg);
 }
 void Test_Option::Run_Insert_Auto(sqlite3 *Database,char *err_msg){
-    Insert_Call_Test(Database, err_msg);
+    Insert_Default_Call_Test(Database, err_msg);
 }
 void Test_Option::Run_Displaytable_Auto_all(sqlite3 *Database,char *err_msg){
-    Displaytable_Call_Test_AllData(Database, err_msg);
+    Displaytable_Default_Call_Test_AllData(Database, err_msg);
 }
 
 void Test_Option::Run_Default_Values_Test(sqlite3 *Database,char *err_msg){
